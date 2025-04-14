@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Assets/Assets.css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">  <!-- Font Awesome for Icons -->
+    <title>Portfolio Website</title>
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="logo">Dharshana</a>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <nav id="nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="skills.html">Skills</a>
+        <a href="education.html">Education</a>
+        <a href="assignment.html">Assignments</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="home" id="home">
+    <div class="home-img">
+        <img src="Assets/Assets.image/WhatsApp Image 2025-04-14 at 13.18.08_253b0647.jpg" alt="Profile Picture">  <!-- Add your profile picture -->
+    </div>
+    <div class="home-content">
+        <h1>Hi, I'm <span>Dharshana</span></h1>
+        <h3 class="typing-text">I'm a <span id="typing"></span></h3>
+        <p>I am a 3rd-year Civil Engineering student</p>
+
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/your-profile" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/your-profile" target="_blank"><i class="fa-brands fa-github"></i></a>
+            <a href="https://twitter.com/your-profile" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.instagram.com/your-profile" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+
+        <a href="contact.html" class="btn">Hire Me</a>
+    </div>
+</section>
+
+<script>
+function toggleMenu() {
+    document.getElementById("nav").classList.toggle("active");
+}
+
+const typingText = ["Civil Engineer,CAD Designer,Automation Enthusiast"];
+let typingIndex = 0;
+let charIndex = 0;
+let typingElement = document.getElementById("typing");
+
+function typeEffect() {
+    if (charIndex < typingText[typingIndex].length) {
+        typingElement.innerHTML += typingText[typingIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(typeEffect, 100);
+    } else {
+        setTimeout(eraseEffect, 1500);
+    }
+}
+
+function eraseEffect() {
+    if (charIndex > 0) {
+        typingElement.innerHTML = typingText[typingIndex].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(eraseEffect, 50);
+    } else {
+        typingIndex = (typingIndex + 1) % typingText.length;
+        setTimeout(typeEffect, 500);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    setTimeout(typeEffect, 500);
+});
+</script>
+
+</body>
+</html>
